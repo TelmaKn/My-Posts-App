@@ -1,0 +1,31 @@
+.modalContain {
+  top: 10rem;
+}
+
+.modal-header {
+  border: none;
+  padding-bottom: 0;
+}
+.modal-footer {
+  border: none;
+  -bottom: 20px;
+}
+.modal-title {
+  margin-bottom: 1.5rem;
+}
+
+.titleInput {
+  height: auto;
+}
+.descriptionInput {
+  height: 120px;
+}
+.modal-header .btn-close {
+  font-size: 18px;
+}
+.modal-body-details {
+  padding-bottom: 3.5rem;
+}
+.modal-body-edit {
+  padding-bottom: 0.5rem;
+}

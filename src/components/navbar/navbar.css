@@ -1,0 +1,26 @@
+.navbar {
+  margin-bottom: 5rem;
+}
+.background {
+  background-color: #d15a38;
+}
+
+.linkHome {
+  color: whitesmoke;
+  font-weight: 600;
+  font-size: 2.5rem;
+  letter-spacing: 0.2rem;
+}
+
+.linkNewPost {
+  background-color: #d15a38;
+  border: none;
+  color: whitesmoke;
+  font-weight: 500;
+  font-size: 1.5rem;
+  letter-spacing: 0.1rem;
+}
+.linkNewPost:hover {
+  background-color: #d15a38;
+  border: none;
+}
