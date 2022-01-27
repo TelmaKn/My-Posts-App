@@ -31,16 +31,7 @@ export const deletebyId = createAsyncThunk(
 const postsSlice = createSlice({
   name: "posts",
   initialState: postsInitialState,
-  reducers: {
-    cleanCurrentState: (state) => {
-      state.currentPost = {
-        userId: "",
-        id: "",
-        title: "",
-        body: "",
-      };
-    },
-  },
+
   extraReducers: {
     [getAll.pending]: (state) => {
       state.loading = true;
@@ -58,7 +49,7 @@ const postsSlice = createSlice({
       state.loading = true;
     },
     [getById.fulfilled]: (state, action) => {
-      state.currentposts = action.payload;
+      state.currentPost = action.payload;
       state.loading = false;
     },
     [getById.rejected]: (state, action) => {

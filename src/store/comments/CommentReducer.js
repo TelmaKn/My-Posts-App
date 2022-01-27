@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import * as postServices from "../../services/apiServices";
+import * as apiServices from "../../services/apiServices";
 
 const commentsInitialState = {
   loading: false,
@@ -7,8 +7,9 @@ const commentsInitialState = {
   error: "",
 };
 
-export const getAll = createAsyncThunk("comments/getAll", () =>
-  postServices.getAll("/comments")
+export const getPostComments = createAsyncThunk(
+  "comments/getPostComments",
+  apiServices.getCommentsByPostId
 );
 
 const commentsSlice = createSlice({
@@ -16,14 +17,14 @@ const commentsSlice = createSlice({
   initialState: commentsInitialState,
 
   extraReducers: {
-    [getAll.pending]: (state) => {
+    [getPostComments.pending]: (state) => {
       state.loading = true;
     },
-    [getAll.fulfilled]: (state, action) => {
+    [getPostComments.fulfilled]: (state, action) => {
       state.data = action.payload;
       state.loading = false;
     },
-    [getAll.rejected]: (state, action) => {
+    [getPostComments.rejected]: (state, action) => {
       state.loading = false;
       state.error = action.error.message;
     },

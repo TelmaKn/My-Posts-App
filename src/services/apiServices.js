@@ -43,3 +43,14 @@ export const deleteById = async (id) => {
     return error.message;
   }
 };
+export const getCommentsByPostId = async (postId) => {
+  try {
+    const allComments = await axios.get(`${baseURL}/comments`);
+    const postComents = await allComments.data.filter(
+      (comment) => comment.postId === postId
+    );
+    return postComents;
+  } catch (error) {
+    return error.message;
+  }
+};

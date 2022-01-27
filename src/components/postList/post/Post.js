@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import * as postActions from "../../../store/posts/PostReducer";
+import * as commentActions from "../../../store/comments/CommentReducer";
 import ModalForm from "../../modal/ModalForm";
 import { FaTrashAlt, FaEdit } from "react-icons/fa";
 import "./post.css";
@@ -9,14 +10,10 @@ import { Button } from "react-bootstrap";
 const Post = (props) => {
   const [show, setShow] = useState(false);
   const [edit, setEdit] = useState(false);
+  const dispatch = useDispatch();
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
-  const forEdit = () => setEdit(true);
-  const forDetails = () => setEdit(false);
-
-  const dispatch = useDispatch();
 
   const deletePost = (id) => {
     dispatch(postActions.deletebyId(id));
@@ -40,7 +37,8 @@ const Post = (props) => {
               className="widget-heading firstToCapiTalize"
               onClick={() => {
                 handleShow();
-                forDetails();
+                setEdit(false);
+                dispatch(commentActions.getPostComments(props.id));
               }}
             >
               {props.title}
@@ -50,7 +48,7 @@ const Post = (props) => {
             <Button
               onClick={() => {
                 handleShow();
-                forEdit();
+                setEdit(true);
               }}
               className="btn border-0 btn-edit"
             >
