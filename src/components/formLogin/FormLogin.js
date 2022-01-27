@@ -53,7 +53,6 @@ const LoginForm = () => {
             }}
             onSubmit={(values, { resetForm }) => {
               onSubmit(values);
-              resetForm();
             }}
           >
             {({ errors }) => (
