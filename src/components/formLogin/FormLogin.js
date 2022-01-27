@@ -1,24 +1,20 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import { signupAction } from "../../store/auth/authAction";
-import { useDispatch, useSelector } from "react-redux";
+import { userExist } from "../../services/authService";
 import { useNavigate } from "react-router-dom";
 import "./formLogin.css";
 
 const LoginForm = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
-  // const isAuth = useSelector((state) => state.authRootReducer.isAuth);
-
-  // if (isAuth) navigate("/");
+  if (!userExist) navigate("/");
   return (
     <div className="container vh-100 d-grid align-content-center">
       <div className="row justify-content-center ">
         <div className="col-8 col-md-4 formik">
           <Formik
             initialValues={{
-              email: "challenge@alkemy.org",
-              password: "react",
+              email: "example@email.com",
+              username: "username",
             }}
             validate={(values) => {
               let errors = {};
@@ -31,14 +27,17 @@ const LoginForm = () => {
                 errors.email = "Invalid email address";
               }
 
-              if (!values.password) {
-                errors.password = "Required";
+              if (!values.username) {
+                errors.username = "Required";
               }
 
               return errors;
             }}
             onSubmit={(values, { resetForm }) => {
-              dispatch(signupAction(values.email, values.password));
+              if (userExist(values.email, values.username)) {
+                resetForm();
+                navigate("/");
+              }
               resetForm();
             }}
           >
@@ -59,20 +58,20 @@ const LoginForm = () => {
                   </div>
                   <div className="mb-3">
                     <label
-                      htmlFor="exampleInputPassword1"
+                      htmlFor="exampleInputusername1"
                       className="form-label"
                     >
-                      Password
+                      username
                     </label>
                     <Field
-                      type="password"
+                      type="username"
                       className="form-control"
-                      name="password"
+                      name="username"
                     />
                     <ErrorMessage
-                      name="password"
+                      name="username"
                       component={() => (
-                        <div className="form-text error">{errors.password}</div>
+                        <div className="form-text error">{errors.username}</div>
                       )}
                     />
                   </div>
