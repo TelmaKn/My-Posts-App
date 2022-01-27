@@ -3,8 +3,8 @@ import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 import { Container, ListGroup } from "react-bootstrap";
 import Post from "./post/Post";
-import "./postList.css";
 import Loader from "../loader/Loader";
+import "./postList.css";
 
 const PostList = () => {
   const [isLoading, setIsLoading] = useState(true);

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import "./formLogin.css";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import { getUser } from "../../store/user/userReducer";
 import { getUserPosts } from "../../store/posts/PostReducer";
+import "./formLogin.css";
 
 const LoginForm = () => {
   const [userData, setUserData] = useState(false);

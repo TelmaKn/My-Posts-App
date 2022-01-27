@@ -4,8 +4,8 @@ import * as postActions from "../../../store/posts/PostReducer";
 import * as commentActions from "../../../store/comments/CommentReducer";
 import ModalForm from "../../modal/ModalForm";
 import { FaTrashAlt, FaEdit } from "react-icons/fa";
-import "./post.css";
 import { Button } from "react-bootstrap";
+import "./post.css";
 
 const Post = (props) => {
   const [show, setShow] = useState(false);

@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Modal, Button } from "react-bootstrap";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import "./modalForm.css";
 import * as postActions from "../../store/posts/PostReducer";
+import "./modalForm.css";
 
 function ModalForm(props) {
   const [isLoading, setIsLoading] = useState(true);
