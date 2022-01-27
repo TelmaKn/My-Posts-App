@@ -4,5 +4,6 @@
   width: 60%;
 }
 .spinner-grow {
-  background-color: rgb(160, 157, 157);
+  margin-top: 100px;
+  background-color: whitesmoke;
 }
