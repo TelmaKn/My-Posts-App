@@ -38,7 +38,7 @@
 .widget-heading {
   padding: 0.5rem 0rem 0.5rem 1rem;
   margin-left: 3px;
-  text-transform: capitalize;
+
   color: #021c15ca;
 }
 .widget-heading:hover {
@@ -60,4 +60,7 @@
 .btn:hover {
   background-color: #017681;
   transform: scale(1.1);
+}
+.btn-edit:focus {
+  background-color: #017681;
 }

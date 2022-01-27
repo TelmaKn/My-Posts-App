@@ -11,3 +11,28 @@ a {
   text-decoration: none !important;
   opacity: 1;
 }
+
+btn {
+  border: none !important;
+}
+.btn-check:focus + .btn,
+.btn:focus {
+  box-shadow: none !important;
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #017681;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #01545c;
+}
+.firstToCapiTalize::first-letter {
+  text-transform: capitalize;
+}

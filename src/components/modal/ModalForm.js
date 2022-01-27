@@ -1,13 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Modal, Button } from "react-bootstrap";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import "./modalForm.css";
 import * as postActions from "../../store/posts/PostReducer";
+import * as commentsActions from "../../store/comments/CommentReducer";
 
 function ModalForm(props) {
   const dispatch = useDispatch();
   const statePost = useSelector((state) => state.postsList.data);
+  const comments = useSelector((state) => state.commentsList.data);
+  useEffect(() => {
+    dispatch(commentsActions.getAll());
+  }, []);
+
   return (
     <>
       <Modal
@@ -21,10 +27,29 @@ function ModalForm(props) {
         <Modal.Header closeButton />
 
         {props.title && !props.edit ? (
-          <Modal.Body className="modal-body-details">
-            <Modal.Title>{props.title}</Modal.Title>
-            {props.description}
-          </Modal.Body>
+          <>
+            <Modal.Body className="modal-body-details ">
+              <Modal.Title className="firstToCapiTalize">
+                {props.title}
+              </Modal.Title>
+              <p className="firstToCapiTalize">{props.description}</p>
+            </Modal.Body>
+            <Modal.Footer>
+              <div className="comments-section">
+                <h6 className="comments-section--title">Comments</h6>
+                {comments.map((comment) => (
+                  <>
+                    <p className="comments-name firstToCapiTalize">
+                      {comment.name}
+                    </p>
+                    <p className="comments-body firstToCapiTalize">
+                      {comment.body}
+                    </p>
+                  </>
+                ))}
+              </div>
+            </Modal.Footer>
+          </>
         ) : (
           <Formik
             initialValues={{

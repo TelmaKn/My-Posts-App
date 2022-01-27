@@ -24,3 +24,6 @@
   background-color: #d15a38;
   border: none;
 }
+.linkNewPost:focus {
+  background-color: #d15a38;
+}

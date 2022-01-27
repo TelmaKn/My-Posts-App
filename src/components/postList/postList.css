@@ -17,10 +17,6 @@
   white-space: nowrap;
 }
 
-.text-capitalize {
-  text-transform: capitalize !important;
-}
-
 .scroll-area-sm {
   height: 288px;
   overflow-x: hidden;

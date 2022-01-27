@@ -29,3 +29,24 @@
 .modal-body-edit {
   padding-bottom: 0.5rem;
 }
+
+.comments-section {
+  max-height: 300px;
+  overflow-y: scroll;
+}
+
+.comments-section--title {
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.comments-name {
+  color: #017681;
+  font-size: 12px;
+  font-weight: 500;
+}
+.comments-body {
+  color: rgb(128, 128, 128);
+  padding-bottom: 20px;
+  border-bottom: 1px solid grey;
+}

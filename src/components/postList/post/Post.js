@@ -35,9 +35,9 @@ const Post = (props) => {
       <div className="line-color" />
       <div className="widget-content p-0">
         <div className="widget-content-wrapper">
-          <div className="widget-content-left">
+          <div className="widget-content-left ">
             <div
-              className="widget-heading"
+              className="widget-heading firstToCapiTalize"
               onClick={() => {
                 handleShow();
                 forDetails();
