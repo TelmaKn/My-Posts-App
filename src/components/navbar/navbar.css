@@ -1,11 +1,12 @@
 .navbar {
   margin-bottom: 5rem;
 }
+
 .background {
   background-color: #d15a38;
 }
 
-.linkHome {
+.pageName {
   color: whitesmoke;
   font-weight: 600;
   font-size: 2.5rem;
@@ -18,7 +19,7 @@
   color: whitesmoke;
   font-weight: 500;
   font-size: 1.5rem;
-  letter-spacing: 0.1rem;
+  letter-spacing: 0.05rem;
 }
 .linkNewPost:hover {
   background-color: #d15a38;

@@ -1,15 +1,16 @@
 import axios from "axios";
 import { baseURL } from "./api";
 
-export const getAll = async (props) => {
+export const getAuthUserPost = async (id) => {
   try {
-    const { data } = await axios.get(`${baseURL}${props}`);
-    console.log(props);
-    return data;
+    const allPosts = await axios.get(`${baseURL}/posts`);
+    const postUser = await allPosts.data.filter((post) => post.userId === id);
+    return postUser;
   } catch (error) {
     return error.message;
   }
 };
+
 export const getById = async (id) => {
   try {
     const { data } = await axios.get(`${baseURL}/posts/${id}`);
@@ -52,5 +53,18 @@ export const getCommentsByPostId = async (postId) => {
     return postComents;
   } catch (error) {
     return error.message;
+  }
+};
+
+export const getUserData = async ({ username, email }) => {
+  console.log("hola");
+  try {
+    const allUsers = await axios.get(`${baseURL}/users`);
+    const user = await allUsers.data.find((user) => user.email === email);
+    if (username == user.username) {
+      return user;
+    }
+  } catch (error) {
+    console.log(error);
   }
 };

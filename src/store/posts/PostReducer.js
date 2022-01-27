@@ -13,8 +13,9 @@ const postsInitialState = {
   },
 };
 
-export const getAll = createAsyncThunk("post/getAll", () =>
-  postServices.getAll("/posts")
+export const getUserPosts = createAsyncThunk(
+  "post/getUserPosts",
+  postServices.getAuthUserPost
 );
 
 export const getById = createAsyncThunk("post/getById", postServices.getById);
@@ -33,14 +34,14 @@ const postsSlice = createSlice({
   initialState: postsInitialState,
 
   extraReducers: {
-    [getAll.pending]: (state) => {
+    [getUserPosts.pending]: (state) => {
       state.loading = true;
     },
-    [getAll.fulfilled]: (state, action) => {
+    [getUserPosts.fulfilled]: (state, action) => {
       state.data = action.payload;
       state.loading = false;
     },
-    [getAll.rejected]: (state, action) => {
+    [getUserPosts.rejected]: (state, action) => {
       state.loading = false;
       state.error = action.error.message;
     },
@@ -97,5 +98,5 @@ const postsSlice = createSlice({
     },
   },
 });
-export const { cleanCurrentState } = postsSlice.actions;
+
 export default postsSlice.reducer;

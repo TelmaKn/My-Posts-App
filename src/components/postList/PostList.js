@@ -1,17 +1,11 @@
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import * as postActions from "../../store/posts/PostReducer";
+import React from "react";
+import { useSelector } from "react-redux";
 import Post from "./post/Post";
 import { Container, ListGroup } from "react-bootstrap";
 import "./postList.css";
 
 const PostList = () => {
-  const dispatch = useDispatch();
   const postList = useSelector((state) => state.postsList.data);
-
-  useEffect(() => {
-    dispatch(postActions.getAll());
-  }, [dispatch]);
 
   return (
     <Container className="mt-5 contain">

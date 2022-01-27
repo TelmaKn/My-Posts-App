@@ -1,20 +1,40 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import { userExist } from "../../services/authService";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import "./formLogin.css";
+import { getUser } from "../../store/user/userReducer";
+import { getUserPosts } from "../../store/posts/PostReducer";
 
 const LoginForm = () => {
+  const [userData, setUserData] = useState(false);
+
   const navigate = useNavigate();
-  if (!userExist) navigate("/");
+  const dispatch = useDispatch();
+  const userId = useSelector((state) => state.user.data.id);
+
+  if (userId) navigate("/");
+
+  const onSubmit = async (values) => {
+    await dispatch(getUser(values));
+  };
+
+  useEffect(() => {
+    userId && dispatch(getUserPosts(userId)) && setUserData(true);
+  }, [userId, dispatch]);
+
+  useEffect(() => {
+    userData && navigate("/");
+  }, [userData, navigate]);
+
   return (
     <div className="container vh-100 d-grid align-content-center">
       <div className="row justify-content-center ">
         <div className="col-8 col-md-4 formik">
           <Formik
             initialValues={{
-              email: "example@email.com",
-              username: "username",
+              email: "Sincere@april.biz",
+              username: "Bret",
             }}
             validate={(values) => {
               let errors = {};
@@ -34,10 +54,7 @@ const LoginForm = () => {
               return errors;
             }}
             onSubmit={(values, { resetForm }) => {
-              if (userExist(values.email, values.username)) {
-                resetForm();
-                navigate("/");
-              }
+              onSubmit(values);
               resetForm();
             }}
           >

@@ -11,12 +11,10 @@ const NavbarMenu = () => {
 
   return (
     <>
-      <Navbar className="pt-2 pb-3 background">
+      <Navbar className="pt-3 pb-2 background">
         <Container className="px-5 ">
           <Navbar.Brand>
-            <Link className="linkHome " to="/">
-              Post List
-            </Link>
+            <h1 className="pageName ">My Post</h1>
           </Navbar.Brand>
           <Navbar.Text>
             <Button
