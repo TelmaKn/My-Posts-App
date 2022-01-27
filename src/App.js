@@ -11,8 +11,6 @@ function App() {
           <Routes>
             <Route path="/Login" element={<Login />} />
             <Route path="/" element={<Home />} />
-
-            {/* <PrivateRoute exact path="/" component={Home} /> */}
           </Routes>
         </Layout>
       </Router>

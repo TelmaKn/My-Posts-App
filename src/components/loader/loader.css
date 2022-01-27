@@ -1,0 +1,8 @@
+.spinners-container {
+  display: flex;
+  justify-content: space-evenly;
+  width: 60%;
+}
+.spinner-grow {
+  background-color: rgb(160, 157, 157);
+}

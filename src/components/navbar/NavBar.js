@@ -23,7 +23,7 @@ const NavbarMenu = () => {
                 handleShow();
               }}
             >
-              Create New Post
+              Create New Posts
             </Button>
           </Navbar.Text>
         </Container>

@@ -13,8 +13,6 @@ const LoginForm = () => {
   const dispatch = useDispatch();
   const userId = useSelector((state) => state.user.data.id);
 
-  if (userId) navigate("/");
-
   const onSubmit = async (values) => {
     await dispatch(getUser(values));
   };
@@ -28,7 +26,7 @@ const LoginForm = () => {
   }, [userData, navigate]);
 
   return (
-    <div className="container vh-100 d-grid align-content-center">
+    <div className="container vh-100 d-grid ">
       <div className="row justify-content-center ">
         <div className="col-8 col-md-4 formik">
           <Formik
@@ -78,7 +76,7 @@ const LoginForm = () => {
                       htmlFor="exampleInputusername1"
                       className="form-label"
                     >
-                      username
+                      Username
                     </label>
                     <Field
                       type="username"

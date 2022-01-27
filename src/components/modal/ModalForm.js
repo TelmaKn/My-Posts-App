@@ -1,16 +1,19 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Modal, Button } from "react-bootstrap";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import "./modalForm.css";
 import * as postActions from "../../store/posts/PostReducer";
-import * as commentsActions from "../../store/comments/CommentReducer";
 
 function ModalForm(props) {
+  const [isLoading, setIsLoading] = useState(true);
   const dispatch = useDispatch();
   const postsList = useSelector((state) => state.postsList.data);
   const comments = useSelector((state) => state.commentsList.data);
-  const loadingComment = useSelector((state) => state.commentsList.loading);
+
+  useEffect(() => {
+    comments && setIsLoading(false);
+  }, [comments]);
 
   return (
     <Modal
@@ -33,7 +36,7 @@ function ModalForm(props) {
           <Modal.Footer>
             <div className="comments-section">
               <h6 className="comments-section--title">Comments</h6>
-              {loadingComment ? (
+              {isLoading ? (
                 <p>Loading comments...</p>
               ) : (
                 <>
