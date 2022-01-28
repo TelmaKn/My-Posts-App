@@ -74,7 +74,6 @@ const postsSlice = createSlice({
       state.loading = true;
     },
     [update.fulfilled]: (state, action) => {
-      console.log(action.payload);
       const postForUpdate = state.data.findIndex(
         (e) => e.id == action.payload.id
       );

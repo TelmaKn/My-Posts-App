@@ -30,7 +30,7 @@ export const create = async (post) => {
 export const update = async ({ id, title, body }) => {
   try {
     const { data } = await axios.put(`${baseURL}/posts/${id}`, { title, body });
-    console.log(id);
+
     return data;
   } catch (error) {
     return error.message;
@@ -57,7 +57,6 @@ export const getCommentsByPostId = async (postId) => {
 };
 
 export const getUserData = async ({ username, email }) => {
-  console.log("hola");
   try {
     const allUsers = await axios.get(`${baseURL}/users`);
     const user = await allUsers.data.find((user) => user.email === email);
