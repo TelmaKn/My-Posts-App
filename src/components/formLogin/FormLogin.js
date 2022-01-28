@@ -31,8 +31,8 @@ const LoginForm = () => {
         <div className="col-8 col-md-4 formik">
           <Formik
             initialValues={{
-              email: "Sincere@april.biz",
-              username: "Bret",
+              email: "example@email.com",
+              username: "Username",
             }}
             validate={(values) => {
               let errors = {};
@@ -51,7 +51,7 @@ const LoginForm = () => {
 
               return errors;
             }}
-            onSubmit={(values, { resetForm }) => {
+            onSubmit={(values) => {
               onSubmit(values);
             }}
           >
